@@ -54,4 +54,5 @@ docker compose up -d
 ```bash
 go run cmd/main.go
 ```
+
 A API estará disponível em: http://localhost:8000
