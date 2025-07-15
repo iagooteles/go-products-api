@@ -6,10 +6,12 @@ Esta é uma API REST desenvolvida em Go com o framework [Gin](https://github.com
 
 ## 🚀 Endpoints
 
-| Método | Rota         | Descrição               |
-|--------|--------------|-------------------------|
-| GET    | `/`          | Rota Teste              |
-| GET    | `/products`  | Lista todos os produtos |
+| Método | Rota                   | Descrição               |
+|--------|------------------------|-------------------------|
+| GET    | `/`                    | Rota Teste              |
+| GET    | `/products`            | Lista todos os produtos |
+| POST   | `/product`             | Adiciona um produto     |
+| GET    | `/product/:productId`  | Busca produto por id    |
 
 ---
 
@@ -29,6 +31,7 @@ Esta é uma API REST desenvolvida em Go com o framework [Gin](https://github.com
 - [Go (Golang)](https://go.dev/)
 - [Gin Gonic](https://github.com/gin-gonic/gin)
 - [PostgreSQL](https://www.postgresql.org/)
+- Docker & Docker Compose
 - Arquitetura limpa: separação por responsabilidades
 
 
@@ -44,15 +47,26 @@ git clone https://github.com/iagooteles/go-products-api.git
 cd go-products-api
 ```
 
-### 2. Inicie o banco de dados com Docker:
+### 2. Inicie o app e o banco de dados com Docker:
 ```bash
-docker compose up -d
+docker compose up --build
 ```
 
-3. Rode a aplicação:
+3. Acesse a API em:
 
+```bash
+http://localhost:8000
+```
+
+🔧 Rodando sem Docker (modo local)
+Apenas se preferir usar o Go instalado na sua máquina
+
+Suba o banco:
+```bash
+docker compose up -d go_db
+```
+
+Rode a aplicação Go:
 ```bash
 go run cmd/main.go
 ```
-
-A API estará disponível em: http://localhost:8000
