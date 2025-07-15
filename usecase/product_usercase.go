@@ -5,12 +5,23 @@ import (
 	"go-api/repository"
 )
 
+type ProductUsecaseInterface interface {
+	GetProducts() ([]model.Product, error)
+	CreateProduct(product model.Product) (model.Product, error)
+	GetProductById(productId int) (*model.Product, error)
+	UpdateProduct(product model.Product) (model.Product, error)
+	DeleteProduct(productId int) (bool, error)
+}
+
 type ProductUsecase struct {
 	repository repository.ProductRepository
 }
 
-func NewProductUsecase(repo repository.ProductRepository) ProductUsecase {
-	return ProductUsecase{
+var _ ProductUsecaseInterface = (*ProductUsecase)(nil)
+
+
+func NewProductUsecase(repo repository.ProductRepository) ProductUsecaseInterface {
+	return &ProductUsecase{
 		repository: repo,
 	}
 }

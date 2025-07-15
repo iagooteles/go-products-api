@@ -92,7 +92,6 @@ func (pr *ProductRepository) GetProductById(id_product int) (*model.Product, err
 }
 
 func (pr *ProductRepository) UpdateProduct(product model.Product) (int, error) {
-
 	var id int
 	query, err := pr.connection.Prepare("UPDATE product" +
 		" SET product_name = $1, price = $2" +
