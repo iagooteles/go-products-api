@@ -113,3 +113,25 @@ func (pr *ProductRepository) UpdateProduct(product model.Product) (int, error) {
 	query.Close()
 	return id, nil
 }
+
+func (pr *ProductRepository) DeleteProduct(id_product int) (bool, error) {
+	query := "DELETE FROM product WHERE id = $1"
+
+	result, err := pr.connection.Exec(query, id_product)
+
+	if err != nil {
+		return false, err
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+
+	if rowsAffected == 0 {
+		// Nenhum produto foi deletado (ID não encontrado)
+		return false, nil
+	}
+
+	return true, nil
+}

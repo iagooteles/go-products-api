@@ -13,6 +13,7 @@ Esta é uma API REST desenvolvida em Go com o framework [Gin](https://github.com
 | POST   | `/product`             | Adiciona um produto     |
 | GET    | `/product/:productId`  | Busca produto por id    |
 | PUT    | `/product`             | Rota de Update          |
+| DELETE | `/product/:productId`  | Rota de Delete          |
 
 ---
 
