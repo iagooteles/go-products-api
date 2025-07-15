@@ -12,6 +12,7 @@ Esta é uma API REST desenvolvida em Go com o framework [Gin](https://github.com
 | GET    | `/products`            | Lista todos os produtos |
 | POST   | `/product`             | Adiciona um produto     |
 | GET    | `/product/:productId`  | Busca produto por id    |
+| PUT    | `/product`             | Rota de Update          |
 
 ---
 
@@ -70,3 +71,6 @@ Rode a aplicação Go:
 ```bash
 go run cmd/main.go
 ```
+
+OBS: Em `db/conn.go`, usar localhost quando estiver fazendo os testes na máquina sem docker.
+    Com docker usar a conexão go_db.

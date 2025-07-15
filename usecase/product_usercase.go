@@ -39,3 +39,14 @@ func (pu *ProductUsecase) GetProductById(productId int) (*model.Product, error) 
 	
 	return product, nil
 }
+
+func (pu *ProductUsecase) UpdateProduct(product model.Product) (model.Product, error) {
+	productId, err := pu.repository.UpdateProduct(product)
+
+	if err != nil {
+		return model.Product{}, err
+	}
+
+	product.ID = productId
+	return product, nil
+}

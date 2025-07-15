@@ -83,3 +83,22 @@ func (p *productController) GetProductById(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, product)
 }
+
+func (p *productController) UpdateProduct(ctx *gin.Context) {
+	var product model.Product
+	err := ctx.BindJSON(&product)
+
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, err)
+		return
+	}
+
+	updatedProduct, err := p.productUsecase.UpdateProduct(product)
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, err)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, updatedProduct)
+}
